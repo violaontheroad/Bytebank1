@@ -7,7 +7,6 @@
         private string nome_agencia;
         private double saldo = 150;
 
-
         private Cliente Titular { get; set; }
         public static int TotalDeContasCriadas { get; private set; }
         public string Conta { get => conta; set => conta = value; }
