@@ -74,7 +74,7 @@
             Console.WriteLine($"SALDO: {this.Saldo}");
             Console.WriteLine($"TITULAR: {this.Titular.Nome}");
             Console.WriteLine($"CPF: {this.Titular.Cpf}");
-            Console.WriteLine($"PROFISSÃO: {this.Titular.Profissão}");
+            Console.WriteLine($"PROFISSÃO: {this.Titular.Profissao}");
         }
     }
 }
