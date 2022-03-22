@@ -1,40 +1,23 @@
-﻿namespace bytebank
-{
-    class ContaCorrente
-    {
-        private string conta;
-        private int codigo_agencia;
-        private string nome_agencia;
-        private double saldo = 150;
+﻿using bytebank;
 
-        private Cliente Titular { get; set; }
-        public static int TotalDeContasCriadas { get; private set; }
+namespace bytebank
+{
+    public class ContaCorrente
+    {
+
+        private Cliente titular;
+        public Cliente Titular { get { return titular; } set { titular = value; } }
+
+        public int Numero_agencia { get => numero_agencia; set => numero_agencia = value; }
         public string Conta { get => conta; set => conta = value; }
-        public int Codigo_agencia { get => codigo_agencia; set => codigo_agencia = value; }
-        public string Nome_agencia { get => nome_agencia; set => nome_agencia = value; }
         public double Saldo { get => saldo; set => saldo = value; }
 
-        ////Construtor padrão.
-        public ContaCorrente()
-        {
-            TotalDeContasCriadas = TotalDeContasCriadas + 1;
-        }
-        public ContaCorrente(string conta, int codigo_agencia, string nome_agencia, double saldo, Cliente titular)
-        {
-            this.Conta = conta;
-            this.Codigo_agencia = codigo_agencia;
-            this.Nome_agencia = nome_agencia;
-            this.Saldo = this.Saldo+ saldo;
-            this.Titular = titular;
-            TotalDeContasCriadas = TotalDeContasCriadas + 1;
-        }
+        public string nome_agencia;
+        private int numero_agencia;
+        private string conta;
 
-        public ContaCorrente(int codigo_agencia, string conta)
-        {
-            Codigo_agencia = codigo_agencia;
-            Conta = conta;
-            TotalDeContasCriadas = TotalDeContasCriadas + 1;
-        }
+        private double saldo;
+
 
         public bool Sacar(double valor)
         {
@@ -42,38 +25,80 @@
             {
                 return false;
             }
-
-            Saldo -= valor;
-            return true;
+            if (valor < 0)
+            {
+                return false;
+            }
+            else
+            {
+                Saldo = Saldo - valor;
+                return true;
+            }
         }
 
         public void Depositar(double valor)
         {
-            Saldo += valor;
+            if (valor < 0)
+            {
+                return;
+            }
+            Saldo = Saldo + valor;
         }
-        public bool Transferir(double valor, ContaCorrente contaDestino)
+        public bool Transferir(double valor, ContaCorrente destino)
         {
             if (Saldo < valor)
             {
                 return false;
             }
-
-            Saldo -= valor;
-            contaDestino.Depositar(valor);
-            return true;
+            if (valor < 0)
+            {
+                return false;
+            }
+            else
+            {
+                Saldo = Saldo - valor;
+                destino.Saldo = destino.Saldo + valor;
+                return true;
+            }
         }
 
-        public void InformacaoConta()
+        public void DefinirSaldo(double valor)
         {
-            Console.WriteLine("### INFORMAÇÕES BANCÁRIAS ###");
-            Console.WriteLine("#############################");
-            Console.WriteLine($"CONTA: {this.Conta}");
-            Console.WriteLine($"COD AGÊNCIA: {this.Codigo_agencia}");
-            Console.WriteLine($"NOME AGÊNCIA: {this.Nome_agencia}");
-            Console.WriteLine($"SALDO: {this.Saldo}");
-            Console.WriteLine($"TITULAR: {this.Titular.Nome}");
-            Console.WriteLine($"CPF: {this.Titular.Cpf}");
-            Console.WriteLine($"PROFISSÃO: {this.Titular.Profissao}");
+            if (valor < 0)
+            {
+                return;
+            }
+            else
+            {
+                Saldo = Saldo + valor;
+            }
         }
+
+        public ContaCorrente(int agencia, string conta)
+        {
+            Numero_agencia = agencia;
+            Conta = conta;
+        }
+
+
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

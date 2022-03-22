@@ -2,18 +2,17 @@
 namespace bytebank
 {
     public class Cliente
-    { 
-        public Cliente(string cpf, string nome, string profissao)
+    {
+
+        public string Cpf { get; set; }
+        public string Nome { get; set; }
+        public string Profissao { get; set; }
+
+        public static int TotalClientesCadastrados { get; set; }
+
+        public Cliente()
         {
-            this.Cpf = cpf;
-            this.Nome = nome;
-            this.Profissao = profissao;
-        }    
-        private string cpf;
-        private string nome { get; set; }
-        private string profissao { get; set; }
-        public string Cpf { get => cpf; set => cpf = value; }
-        public string Nome { get => nome; set => nome = value; }
-        public string Profissao { get => profissao; set => profissao = value; }
+            TotalClientesCadastrados = TotalClientesCadastrados + 1;
+        }
     }
 }
