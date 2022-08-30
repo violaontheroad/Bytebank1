@@ -35,13 +35,13 @@ Console.WriteLine("Boas Vindas ao seu banco, ByteBank!\n");
 
 //Console.WriteLine("Total de clientes: "+ Cliente.TotalClientesCadastrados);
 
-//ContaCorrente contaAndre = new ContaCorrente(159,"152869-x");
-//contaAndre.Titular = new Cliente();
-//contaAndre.Titular.Nome = " André Pereira";
-//contaAndre.Titular.Profissao = "Auxiliar Administrativo";
-//contaAndre.Saldo = 100;
+ContaCorrente contaAndre = new ContaCorrente(159,"152869-x");
+contaAndre.Titular = new Cliente();
+contaAndre.Titular.Nome = " André Pereira";
+contaAndre.Titular.Profissao = "Auxiliar Administrativo";
+contaAndre.Saldo = 100;
 
-//Console.WriteLine("Total de clientes: " + Cliente.TotalClientesCadastrados);
+Console.WriteLine("Total de clientes: " + Cliente.TotalClientesCadastrados);
 
 Console.ReadKey();
 
